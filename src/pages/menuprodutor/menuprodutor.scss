@@ -1,0 +1,75 @@
+page-menuprodutor {
+    #background{
+        background: rgb(255, 255, 255);
+    }
+    #header-geral{
+        width: 100%;
+
+    }
+    #header-color{
+        height: 110px;
+        box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
+        background: url(../assets/imgs/green.png);
+        background-position: center;
+        background-repeat: no-repeat;
+
+        #producer-name{
+            position: absolute;
+            width: 100%;
+            color: #fff;
+            font-size: 20px;
+            padding-top: 15px;
+        }
+        #profile-picture{
+            width: 100px;
+            margin: 0 auto;
+            
+        }
+        ion-avatar{
+            width: 100px;
+            height: 100px;
+            background: url(../assets/imgs/eu.jpg);
+            background-size: 100px;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 5%;
+            border: 2px #fff solid;
+            border-radius: 100%;
+            
+        }
+    }
+    .label{
+        color: rgb(88, 88, 88);
+    }
+
+    .infos{
+        text-align: center;
+        width: 100%;
+        margin-top: 20%;
+        font-size: 20px;    
+    }
+    #item-list{
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+        width: 95%;
+        margin: 0 auto;
+        border-radius: 5px;
+        margin-top: 5%;
+        
+        .nome-produto{
+            font-size: 20px;
+            color: rgb(51, 51, 51);
+            margin-left: 10px;
+            font-weight: bold;
+            white-space: normal;
+        }
+        .info-produto{
+            margin-left: 10px;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+        .list ion-item-options .button{
+            padding-right: 0px;
+            background: rgb(245, 244, 244);
+        }
+    }
+}

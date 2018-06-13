@@ -1,0 +1,77 @@
+<!--
+  Generated template for the MenuprodutorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content id="background">
+  <div id="header-geral">
+    <div id="header-color">
+        <div text-center id="producer-name">Rafaela Zastavny</div>
+      <ion-toolbar transparent>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="logout()">
+            <ion-icon><img src="./assets/icon/logout.png"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+    
+        <div id="profile-picture">
+          <ion-avatar item-start></ion-avatar>
+        </div>
+
+    </div>
+
+    <div class="infos">
+      MEUS PRODUTOS
+    </div>
+  </div>
+  <div id="item-list">
+    <ion-list >
+      <ion-item-sliding *ngFor="let produto of produtos | async">
+        <button ion-item>
+          <ion-icon item-end name="ios-arrow-forward-outline" color="icons" small></ion-icon>
+          <ion-item *ngFor="let image of files | async">
+          <ion-thumbnail item-start>
+            <img src="{{file.url}}">
+          </ion-thumbnail>
+        </ion-item>
+          <p class="nome-produto">{{produto.nome}} </p>
+          <p class="info-produto">{{produto.descricao}}</p>
+          <p class="info-produto"><strong>Origem:</strong> {{produto.origem}}</p>
+          <p class="info-produto"><strong>Categoria:</strong> {{produto.categoria}}</p>
+        </button>
+        <ion-item-options side="right">
+          <button icon-only ion-button (click)="excluirProduto(produto.key)" color="danger">
+            <ion-icon>
+              <img src="./assets/icon/recycling-bin.png">
+            </ion-icon>
+          </button>
+          <button icon-only ion-button (click)="editarProduto(produto)" color="danger">
+            <ion-icon>
+              <img src="./assets/icon/edit.png">
+            </ion-icon>
+          </button>
+
+        </ion-item-options>
+        <ion-item-options side="left">
+          <button icon-only ion-button (click)="excluirProduto(produto.key)" color="danger">
+            <ion-icon>
+              <img src="./assets/icon/recycling-bin.png">
+            </ion-icon>
+          </button>
+          <button icon-only ion-button (click)="editarProduto(produto)" color="danger">
+            <ion-icon>
+              <img src="./assets/icon/edit.png">
+            </ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab color="icons" (click)='goRegisterPage()'>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

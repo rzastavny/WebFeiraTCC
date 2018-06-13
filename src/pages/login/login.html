@@ -1,0 +1,82 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!-- _____________________Toolbar_____________________ -->
+<ion-header no-border>
+    <ion-toolbar transparent>
+        <ion-buttons end>
+            <button ion-button large icon-only navPop color="light">
+                <ion-icon name="ios-arrow-back">
+                </ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<!-- _________________________________________________ -->
+
+<!-- _____________________Content_____________________ -->
+<ion-content id="background" fullscreen text-center>
+
+    <!-- Logo -->
+    <div id="logo-webfeira">
+        <img src="assets/imgs/webfeira-logo-branco.png">
+    </div>
+
+    <!-- Menu -->
+    <div class="option-menu">
+
+        <h4 id="title-menu">Acessar minha conta</h4>
+
+        <!-- Form login -->
+        <form #myform='ngForm'>
+            <ion-item mode="ios" class="item-input-login">
+                <ion-icon item-left>
+                    <img src="assets/icon/letter.png"> </ion-icon>
+                <ion-input placeholder="E-mail" mode="ios" type="email" #myemail name="email" email [(ngModel)]='email' [clearInput]='!myform.form.valid'
+                    pattern='[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})' #myemail></ion-input>
+                <ion-icon class="isChecked" [hidden]='!myform.form.valid' item-end small name='md-checkmark' color='isValid'></ion-icon>
+            </ion-item>
+            <ion-item mode="ios" class="item-input-login">
+                <ion-icon item-left>
+                    <img src="assets/icon/padlock.png"> </ion-icon>
+                <ion-input placeholder="Senha" type="password" mode="ios" #senha placeholder="Senha" name="password" password [(ngModel)]='password'
+                    minlength="8" maxlength="12" (input)='isPasswordValid()'></ion-input>
+                <ion-icon [hidden]='!passwordCheck' item-end small name='md-checkmark' color='isValid'></ion-icon>
+            </ion-item>
+            <button ion-button [disabled]='(!myform.form.valid || !passwordCheck)' block (click)="logar()">
+                <strong>LOGIN</strong>
+            </button>
+        </form>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4>
+                    <hr>
+                </ion-col>
+                <ion-col col-4>ou logar com</ion-col>
+                <ion-col col-4>
+                    <hr>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <!-- Social networking Buttons -->
+        <button icon-left class="other-login" id="login-google" ion-button>
+            <ion-icon color="light" name="logo-googleplus">
+            </ion-icon> Google </button>
+        <button icon-left class="other-login" id="login-face" ion-button>
+            <ion-icon color="light" item-left name="logo-facebook">
+            </ion-icon>Facebook</button>
+        <button text-center class="register-user" (click)="goToRegisterUser()">Não possui cadastro?
+            <strong>Clique aqui!</strong>
+        </button>
+
+    </div>
+    <!-- end Menu -->
+
+</ion-content>
+<!-- _________________________________________________ -->

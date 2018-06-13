@@ -1,0 +1,47 @@
+page-home {
+    #background-page{
+        background: url(../assets/imgs/planting-background.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    #logo-webfeira{
+        width: auto;
+        height: auto;
+        max-width: 60%;
+        opacity: 0.8;
+        margin: 0 auto;
+        margin-top: 15%;
+    }
+
+    .option-menu{
+        margin-top: 15%;
+        text-align: center;
+
+        #title-menu{
+            color: #fff;
+            width: 100%;
+            font-weight: lighter;
+            font-size: 23px;
+            @font-face {
+                font-family: 'PTSansNarrow';
+                src: url(../assets/fonts/PTSansNarrow.woff2);
+            }
+        }
+
+        #option-buttons {
+        padding-right: 10%;
+        padding-left: 10%;
+
+            button  {
+                height: 55px;
+                border-radius: 30px;
+                background-color: rgba(255,255,255,0.6);
+                color: #353535;
+                font-size: 18px;
+                position: relative;
+                margin-top: 20px;
+            }   
+        }
+    }
+}

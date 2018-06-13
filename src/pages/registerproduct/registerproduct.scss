@@ -1,0 +1,106 @@
+page-registerproduct {
+    #bg{
+        background: url(../assets/imgs/green.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #toolbar{
+        background: transparent;
+    }
+    .title-menu{
+        h4{
+            color: #fff;
+            width: 100%;
+            margin-top: 5%;
+            font-weight: normal;
+            font-size: 25px;
+        }
+    }
+    .menu {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+        color: #fff;
+        
+        .item {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            margin-top: 20px;
+            height: 30px;
+            margin-left: 0px;
+            font-size: 15px;
+            ion-icon{
+                margin-top: 15px;
+            }
+            .icon-textarea{
+                margin-top: 5px;
+            }
+            ion-input {
+                color: #fff;
+                ::-webkit-file-upload-button{
+                    background: transparent;
+                    width: 100%;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    height: 30px;
+                    margin: 0px;
+                    color: #c7c7c7;
+                    font-size: 15px;
+                }
+            }
+            .text-input-wp{
+                border: 0px;
+            }
+            .select{
+                color: white;
+                .select-icon .select-icon-inner{
+                    color: #fff;
+                }
+            }
+            .select-wp{
+                border: 0px;
+            }
+            ion-textarea{
+                color: #fff;
+            }
+            ion-label {
+                color: #fff!important;
+            }
+            .item-inner {
+                border: 0;
+                margin-left: 0px;
+            }
+        }
+        #registerButton {
+            display: block;
+            background: transparent;
+            border: solid 1px #fff;
+            box-shadow: 0px;
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            margin-top: 10%;
+            height: 45px;
+        }
+    }
+
+    #pegarFoto{
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 30px;
+        width: 100%;
+        margin-top: 20px;
+        height: 40px;
+        margin-left: 0px;
+        font-size: 15px;
+        ion-icon{
+            color: #353535;
+            width: 10%;
+            margin-left: 10px;
+        }
+    }
+
+    #card-photo{
+        height: 100%;
+        background: transparent;
+    }
+}

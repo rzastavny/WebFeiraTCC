@@ -1,0 +1,102 @@
+page-login {
+    #background {
+        background: url(../assets/imgs/planting-blur.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #logo-webfeira{
+        width: auto;
+        height: auto;
+        max-width: 40%;
+        opacity: 0.8;
+        margin: 0 auto;
+    }
+
+    .option-menu { 
+        width: 90%;
+        color: #fff;
+        margin: 0 auto;
+        margin-top: 5%;
+
+        #title-menu{
+            font-size: 20px;
+            font-weight: lighter;
+        }
+
+        .item-input-login {
+            background: transparent;
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 30px;
+            margin-top: 20px;
+            height: 40px;
+
+            .text-input-wp{
+                border: 0px;
+            }
+            
+            ion-input {
+                color: #fff;
+                ::-webkit-input-placeholder{
+                    color: #fff;
+                }
+            }
+            ion-textarea{
+                color: #fff;
+                ::-moz-placeholder{
+                    color: #fff;
+                }
+            }
+            ion-label {
+                color: #fff;
+            }
+        }
+        
+        .grid{
+            font-size: 14px;
+            font-weight: lighter;
+            hr{
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        .button {
+            display: block;
+            top: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0px;
+            color: #353535;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+        .other-login{
+            width: 45%;
+            margin-top: 0px;
+        }
+        #login-google{
+            float: left;
+            color: #fff;
+            background-color: rgba(216, 39, 39, 0.5);
+            border: 0px;
+            height: 30px;
+        }
+        #login-face{
+            float: right;
+            color: rgb(255, 255, 255);
+            background-color: rgba(68, 86, 185, 0.5);
+            border: 0px;
+            height: 30px;
+        }
+        .register-user{
+            height: 30px;
+            margin-top: 5%;
+            width: 95%;
+            border-radius: 30px;
+            background: transparent;
+            color: #fff;
+            font-size: 15px;
+            font-weight: lighter;
+
+        }
+    }
+}

@@ -1,0 +1,101 @@
+page-create-profile {
+    #background{
+    background: url(../assets/imgs/planting-blur.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    }
+
+    #add-profile-icon{
+        width: auto;
+        height: auto;
+        max-width: 50%;
+        opacity: 0.8;
+        margin: 0 auto;
+        margin-bottom: 5%;
+    }
+
+    .welcome-description{
+        color: #fff;
+        padding: 0px;
+        margin: 0px;
+        font-size: 15px;
+    }
+
+    #slide-form-profile{
+        height: 40%;
+        margin-top: 5%;
+        p{
+            margin-left: 5%;
+            color: #fff;
+            font-size: 15px;
+        }
+        #btn-next{
+            float: right;
+            width: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0px;
+            color: #353535;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: bold; 
+            }
+        #btn-confirm{
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0px;
+            color: #353535;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .item-slide1 {
+            background: transparent;
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 30px;
+            margin-top: 20px;
+            height: 30px;
+            ion-input {
+                color: #fff;
+                ::-webkit-input-placeholder{
+                    color: #fff;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        #tel-input{
+            float: left;
+            width: 48%;
+            background: transparent;
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 30px;
+            margin-top: 20px;
+            height: 40px;
+            margin-bottom: 20px;
+            ion-input {
+                color: #fff;
+                ::-webkit-input-placeholder{
+                    color: #fff;
+                    font-size: 14px;
+                }
+            }
+        } 
+        #cel-input{
+            float: right; 
+            width: 48%;
+            background: transparent;
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 30px;
+            margin-top: 20px;
+            height: 40px;
+            margin-bottom: 20px;
+            ion-input {
+                color: #fff;
+                ::-webkit-input-placeholder{
+                    color: #fff;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

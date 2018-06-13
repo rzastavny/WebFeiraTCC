@@ -1,0 +1,54 @@
+<!--
+  Generated template for the ConsumerMenuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!-- _____________________Toolbar_____________________ -->
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons end>
+      <button ion-button large icon-only navPop color="light">
+        <ion-icon name="ios-arrow-back">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- _________________________________________________ -->
+
+<!-- _____________________Content_____________________ -->
+<ion-content fullscreen id="background">
+
+<!-- Logo -->
+  <div id="logo-webfeira">
+    <img src="assets/imgs/webfeira-logo-branco.png">
+  </div> 
+
+<!-- Menu -->
+  <div class="option-menu">
+
+    <h4 id="title-menu">O que você deseja encontrar?</h4>
+
+<!-- Option Buttons -->
+    <div class="option-buttons">
+      <button ion-item no-lines text-center (click)="searchProduct()">
+        <ion-icon item-left>
+          <img class="button-icons" src="assets/icon/product34.png">
+        </ion-icon>
+        PRODUTOS
+      </button>
+
+      <button ion-item no-lines text-center (click)="searchFair()">
+        <ion-icon item-left>
+          <img class="button-icons" src="assets/icon/fair-stand34.png">
+        </ion-icon>
+        FEIRAS
+      </button>
+    </div> <!-- end Option Buttons -->
+
+  </div> <!-- end Menu -->
+
+</ion-content>
+<!-- _________________________________________________ -->

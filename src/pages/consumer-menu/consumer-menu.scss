@@ -1,0 +1,48 @@
+page-consumer-menu {
+    #background{
+        background: url(../assets/imgs/planting-blur.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    #logo-webfeira{
+        width: auto;
+        height: auto;
+        max-width: 60%;
+        opacity: 0.8;
+        margin: 0 auto;
+    }
+
+    .option-menu{
+        margin-top: 15%;
+        text-align: center;
+
+        #title-menu{
+            color: #fff;
+            width: 100%;
+            font-weight: 200;
+            font-size: 20px;
+
+        }
+        .option-buttons{
+            padding-right: 10%;
+            padding-left: 10%;
+
+            button{
+                height: 55px;
+                width: 100%;
+                border-radius: 30px;
+                background-color: rgba(255,255,255,0.6);
+                color: #353535;
+                margin-top: 20px;
+                padding-left: 30px;
+
+                .label{
+                    font-size: 18px;
+                    color: #353535;
+                    padding-right: 40%;
+                }
+            }  
+        }
+    } 
+}

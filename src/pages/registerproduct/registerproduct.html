@@ -1,0 +1,72 @@
+<ion-content id="bg" text-center>
+
+  <!-- toolbar -->
+  <div id="toolbar">
+    <ion-toolbar transparent>
+
+      <ion-buttons end>
+        <button class="ion-button-toolbar" navPop ion-button icon-only>
+          <ion-icon name="ios-arrow-back" color="light"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <!-- title menu -->
+  <div class="title-menu">
+    <h4>Cadastrar Produto</h4>
+  </div>
+
+  <!-- menu -->
+
+  <div class="menu">
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-icon item-left>
+          <img src="assets/icon/milk-products.png">
+        </ion-icon>
+        <ion-label>Nome</ion-label>
+        <ion-input type="text" minlength="8" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon class="icon-textarea" item-left>
+          <img src="assets/icon/description.png">
+        </ion-icon>
+        <ion-label>Descrição</ion-label>
+        <ion-textarea type="text" formControlName="descricao"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon item-left>
+          <img src="assets/icon/cow.png">
+        </ion-icon>
+        <ion-label>Origem</ion-label>
+        <ion-select formControlName="origem" multiple="false" cancelText="Cancelar" okText="OK">
+          <ion-option value="Animal">Animal</ion-option>
+          <ion-option value="Vegetal">Vegetal</ion-option>
+          <ion-option value="Mineral">Mineral</ion-option>
+        </ion-select>
+
+      </ion-item>
+      <ion-item>
+        <ion-icon item-left>
+          <img src="assets/icon/milk.png">
+        </ion-icon>
+        <ion-label>Categoria</ion-label>
+        <ion-select formControlName="categoria" multiple="false" cancelText="Cancelar" okText="OK">
+          <ion-option value="Natural">Natural</ion-option>
+          <ion-option value="Processado">Processado</ion-option>
+          <ion-option value="UltraProcessado">Ultra processado</ion-option>
+          <ion-option value="IngCulinario">Ingrediente culinário</ion-option>
+        </ion-select>
+
+      </ion-item>
+        <button ion-button id="pegarFoto" (click)="pegarFotoAvancado()">Selecionar Imagem <ion-icon> <img src="./assets/icon/picture.png"></ion-icon></button>
+
+            <p align="center"><img src="{{photo}}"></p>
+
+      <button id="registerButton" ion-button type="submit" [disabled]="!form.valid" (click)="salvar()" block> Cadastrar </button>
+    </form>
+  </div>
+</ion-content>

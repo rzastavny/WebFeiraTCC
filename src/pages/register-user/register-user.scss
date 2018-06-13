@@ -1,0 +1,72 @@
+page-register-user {
+    #background{
+        background: url(../assets/imgs/planting-blur.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    #logo-webfeira{
+        width: auto;
+        height: auto;
+        max-width: 50%;
+        opacity: 0.8;
+        margin: 0 auto;
+    }
+    .option-menu{
+        background: transparent;
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 10%;
+        color: #fff;
+
+        .item-input-register-user {
+            background: transparent;
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 30px;
+            margin-top: 20px;
+            height: 40px;
+
+            .text-input-wp{
+                border: 0px;
+            }
+
+            ion-input{
+                ::-webkit-input-placeholder{
+                    color: #fff;
+                }
+            }
+        }
+        
+        .item.item-input.item-input-has-focus .item-inner{
+            border-bottom-color: white;
+        }
+        .label{
+            color: #fff;
+        }
+        .item-input-has-focus .label[floating]{
+            color: white;
+        }
+        .item-inner{
+            padding-left: 0%;
+            color: #fff;
+        }
+        .button {
+            display: block;
+            top: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0px;
+            color: #353535;
+            border-radius: 30px;
+            margin-top: 10%;
+        }
+        .back-login{
+            height: 30px;
+            margin-top: 20%;
+            width: 95%;
+            border-radius: 30px;
+            background: transparent;
+            color: #fff;
+            font-size: 15px;
+            font-weight: lighter;
+        }
+    }
+}

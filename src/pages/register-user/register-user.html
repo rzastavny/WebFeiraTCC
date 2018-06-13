@@ -1,0 +1,76 @@
+<!--
+  Generated template for the RegisterUserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!-- _____________________Toolbar_____________________ -->
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons end>
+      <button ion-button large icon-only navPop color="light">
+        <ion-icon name="ios-arrow-back">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- _________________________________________________ -->
+
+<!-- _____________________Content_____________________ -->
+<ion-content id="background" fullscreen text-center>
+  <div id="logo-webfeira">
+    <img src="assets/imgs/webfeira-logo-branco.png">
+  </div>
+
+<!-- Menu -->
+  <div class="option-menu">
+
+    <form #myform='ngForm'>
+
+      <ion-item class="item-input-register-user">
+        <ion-icon item-left>
+          <img src="assets/icon/letter.png">
+        </ion-icon>
+        <ion-input type="email" placeholder="Insira seu e-mail" #myemail name="email" email [(ngModel)]='email' [clearInput]='!myform.form.valid'
+          pattern='[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'>
+        </ion-input>
+        <ion-icon [hidden]='!myform.form.valid' item-end small name='md-checkmark' color='isValid'>
+        </ion-icon>
+      </ion-item>
+
+      <ion-item class="item-input-register-user">
+        <ion-icon item-left>
+          <img src="assets/icon/padlock.png">
+        </ion-icon>
+        <ion-input type="password" #senha placeholder="Digite uma senha" name="password" password [(ngModel)]='password' minlength="8"
+          maxlength="12" (input)='isPasswordValid()' clearInput></ion-input>
+        <ion-icon [hidden]='!passwordCheck' item-end small name='md-checkmark' color='isValid'></ion-icon>
+      </ion-item>
+
+      <!--<ion-item class="item-input-register-user">
+        <ion-icon item-left>
+          <img src="assets/icon/unlock.png">
+        </ion-icon>
+        <ion-input type="password" placeholder="Confirme sua senha" name="confirmPassword" confirmPassword [(ngModel)]="confirmPassword"
+          minlength="8" maxlegth"12" (input)="isPasswordConfirmValid">
+        </ion-input>
+        <ion-icon [hidden]='!isPasswordConfirm' item-end small name='md-checkmark' color='isValid'></ion-icon>
+      </ion-item> -->
+
+      <button ion-button [disabled]='(!myform.form.valid || !passwordCheck)' (click)="cadastrar()" block>
+        <strong>REGISTRAR</strong>
+      </button>
+
+    </form>
+
+<!-- Back to Login Page -->
+    <button text-center class="back-login" navPop>Já possui uma conta?
+      <strong>Faça seu login aqui!</strong>
+    </button>
+  </div>
+
+</ion-content>
+
+<!-- _________________________________________________ -->
