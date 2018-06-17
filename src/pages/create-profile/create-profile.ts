@@ -21,7 +21,7 @@ import { UserProvider } from '../../providers/user/user';
 export class CreateProfilePage {
 
   @ViewChild(Slides) slides: Slides;
-  
+
   profile = {} as Profile;
   isCreating: boolean = false;
 
@@ -93,10 +93,18 @@ export class CreateProfilePage {
 
       this.profile.email = auth.email;
 
+      this.navCtrl.setRoot(MenuprodutorPage, {
+        profile: this.profile
+
+      });
+
       this.provider.saveOrUpdate(this.profile)
+
         .then(() => {
           this.presentToast('Perfil criado com sucesso!', 3000, 'top', 'isValidToast');
-          this.navCtrl.setRoot(MenuprodutorPage);
+
+
+
         }).catch(e => {
           console.log(e);
 

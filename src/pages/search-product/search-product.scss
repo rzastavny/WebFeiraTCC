@@ -50,37 +50,9 @@ page-search-product {
         position: relative;
         margin-top: 23px;
     }
-    #campo-busca{
-        background: #95C829;
-        width: 100%;
-        .options{
-            .segment .segment-button{
-                padding: 0px;
-                color: #fff;
-                font-size: 15px;  
-                border-top: 1px solid #6F951F; 
-                border-bottom: 0px;
-            }
-            .segment-button.segment-activated{
-                background-color: #6F951F;
-                border-top: transparent;
-                border-right: transparent;
-                border-left: transparent;
-                width: 50%;
-                
-            }
-            .segment-ios .segment-button{
-                border-left: 0px;
-                border-right: 0px;
-            }
-            .segment-wp .segment-button{
-                border: 0x; 
-                width: 50%;
-            }
-        }  
-    }
+    
     .searchbar{
-    background-color: #6F951F;
+    background-color: #95C829;
     transition: 2s;
         .searchbar-input{
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
@@ -93,6 +65,29 @@ page-search-product {
             border: 0px;
         }
     } 
+
+    .product{
+        padding: 0px;
+        
+        .label{
+            margin: 0px;
+        }
+
+        ion-card{
+            margin: 10px;
+            border-radius: 10px;
+            background-color: transparent;
+        }
+        .description{
+            white-space: normal;
+            word-break: break-all;
+        }
+    }
+
+    .item.item-block .item-inner {
+        padding-right: 0px; 
+        background: transparent;  
+    }
     
     #item-list-products{
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);

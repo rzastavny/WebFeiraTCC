@@ -8,13 +8,6 @@ import { User } from '@firebase/auth-types';
 import { UserProvider } from '../../providers/user/user';
 import { Observable } from 'rxjs/Observable';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -45,10 +38,12 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  //Ir para a página de registro de conta.
   goToRegisterUser(): void {
     this.navCtrl.push(RegisterUserPage);
   }
 
+  //Verifica se a senha possui uma quantidade válida de caracteres.
   isPasswordValid() {
     if (this.password.length >= 8) {
       this.passwordCheck = true;
@@ -57,7 +52,7 @@ export class LoginPage {
     }
   }
 
-
+  //Criando o ToastController.
   presentToast(message: string, duration: number, position: string, style: string) {
     this.toastCtrl.create({
 
@@ -69,29 +64,40 @@ export class LoginPage {
     }).present();
   }
 
+  //Método que faz o Login do produtor.
   logar() {
     let loader = this.loadingCtrl.create({
       content: "Fazendo login...",
       spinner: 'bubbles'
     });
     loader.present();
+
     this.fire.auth.signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
         loader.dismiss();
-        this.presentToast("Bem vindo!", 3000, 'top', 'isValidToast');
+
         this.userProvieder.getUser().subscribe(profiles => {
+        
+          //Se existir perfil, fará o login diretamente para o perfil do produtor.
           if (profiles.length > 0) {
             profiles.forEach(profile => {
               this.profile = profile;
             });
+            this.navCtrl.setRoot(MenuprodutorPage, {
+              profile: this.profile
+            });
+            this.presentToast("Bem vindo!", 3000, 'top', 'isValidToast');
 
-            this.navCtrl.setRoot(MenuprodutorPage);
-          }
+          } 
+          
+          //Se não existir perfil, chama a página para criar um perfil.
           else {
             this.navCtrl.push(CreateProfilePage);
           }
         })
       })
+      
+      //Excessões em que o login não é possível.
       .catch(error => {
         loader.dismiss();
         console.log(error);

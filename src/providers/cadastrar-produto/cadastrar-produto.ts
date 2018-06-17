@@ -86,7 +86,7 @@ export class CadastrarProdutoProvider {
   }
 
   getFiles(){
-    let ref = this.db.list('files');
+    let ref = this.db.list('produtos');
     return ref.snapshotChanges()
     .map(changes=>{
       return changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
@@ -100,15 +100,17 @@ export class CadastrarProdutoProvider {
   }
 
   storeInfoToDatabase(metainfo, produto){
-    console.log(metainfo.downloadURLs[0])
+    console.dir(metainfo);
     let toSave = {
-      nome: produto.nome,
-      descricao: produto.descricao,
-      origem: produto.origem,
-      categoria: produto.categoria,
-      chave: produto.chave,
-      dataUpload: metainfo.timeCreated,
-      url: metainfo.downloadURLs[0]
+    nome: produto.nome,
+    descricao: produto.descricao,
+    origem: produto.origem,
+    categoria: produto.categoria,
+    chave: produto.chave,
+    dataUpload: metainfo.timeCreated,
+    url: metainfo.downloadURLs[0],
+    fullPath: metainfo.fullPath,
+    contentType: metainfo.contentType
     }
     let ref = this.db.list('produtos')
     return ref.push(toSave);

@@ -2,41 +2,55 @@ page-menuprodutor {
     #background{
         background: rgb(255, 255, 255);
     }
-    #header-geral{
-        width: 100%;
-
-    }
-    #header-color{
-        height: 110px;
+    #header{  
+        height: 115px;
         box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
-        background: url(../assets/imgs/green.png);
+        background: url('../assets/imgs/polygon.png');
         background-position: center;
         background-repeat: no-repeat;
+        
 
-        #producer-name{
+        #header-title{
             position: absolute;
             width: 100%;
             color: #fff;
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: lighter;
             padding-top: 15px;
         }
+
         #profile-picture{
             width: 100px;
             margin: 0 auto;
-            
         }
         ion-avatar{
             width: 100px;
             height: 100px;
-            background: url(../assets/imgs/eu.jpg);
+            background: url(../assets/imgs/no-photo.jpg);
             background-size: 100px;
             background-position: center;
             background-repeat: no-repeat;
             margin-top: 5%;
             border: 2px #fff solid;
             border-radius: 100%;
+
+            #choose-photo{
+                border-radius: 100%;
+                width: 10px;
+                height: 25px;
+                position: absolute;
+                margin-left: 80px;
+                margin-top: 60px;
+                background-color: #95C829;    
+            }
             
         }
+    }
+    #producer-name{
+        color: rgb(54, 54, 54);
+        font-size: 22px;
+        font-weight: lighter;
+        padding-top: 10%;
     }
     .label{
         color: rgb(88, 88, 88);

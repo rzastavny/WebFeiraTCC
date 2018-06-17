@@ -25,7 +25,6 @@ import { SearchProductPage } from '../pages/search-product/search-product';
 import { MenuprodutorPage } from '../pages/menuprodutor/menuprodutor';
 import { RegisterproductPage } from '../pages/registerproduct/registerproduct';
 import { CreateProfilePage } from '../pages/create-profile/create-profile';
-import { ProductDetailPage } from '../pages/product-detail/product-detail';
 
  const config = {
   apiKey: "AIzaSyCHy6NAw_MObH0CS7V4LLQGvi-NO2Wi5pY",
@@ -47,7 +46,6 @@ import { ProductDetailPage } from '../pages/product-detail/product-detail';
     MenuprodutorPage,
     RegisterproductPage,
     SearchProductPage,
-    ProductDetailPage,
     CreateProfilePage
   ],
   imports: [
@@ -72,7 +70,6 @@ import { ProductDetailPage } from '../pages/product-detail/product-detail';
     MenuprodutorPage,
     RegisterproductPage,
     SearchProductPage,
-    ProductDetailPage,
     CreateProfilePage
   ],
   providers: [

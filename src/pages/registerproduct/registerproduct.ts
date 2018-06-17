@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
+import { MenuprodutorPage } from '../menuprodutor/menuprodutor';
 
 @IonicPage()
 @Component({
@@ -67,7 +68,7 @@ export class RegisterproductPage {
 
   pegarFotoAvancado() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 600,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       mediaType: this.camera.MediaType.PICTURE,
@@ -81,22 +82,35 @@ export class RegisterproductPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       this.photo = 'data:image/jpeg;base64,' + imageData;
-      console.log("tirar"+this.photo);
     }, (err) => {
       console.log(err);
+    });
+  }
+
+  uploadInformation(text) {
+    let upload = this.provider.uploadToStorage(text);
+    upload.then().then(res => {
+      this.provider.storeInfoToDatabase(res.metadata, this.form.value).then(() => {
+        let toast = this.toast.create({
+          message: 'New File Added!',
+          duration: 3000
+        });
+        toast.present();
+      });
     });
   }
 
   salvar() {
     if (this.form.valid) {
       let upload = this.provider.uploadToStorage(this.photo);
-      upload.then().then(res => {
+      upload.then().then(res => { console.dir(res);
         this.provider.storeInfoToDatabase(res.metadata, this.form.value).then(() => {
           let toast = this.toast.create({
             message: 'Nova foto adicionada!',
             duration: 3000
           })
           toast.present();
+          this.navCtrl.push(MenuprodutorPage);
         
       })
     })
@@ -187,23 +201,6 @@ export class RegisterproductPage {
       this.photo = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       // Handle error
-    });
-  }
-
- 
-
-
-
-  uploadInformation(text) {
-    let upload = this.provider.uploadToStorage(text);
-    upload.then().then(res => {
-      this.provider.storeInfoToDatabase(res.metadata, this.form.value).then(() => {
-        let toast = this.toast.create({
-          message: 'New File Added!',
-          duration: 3000
-        });
-        toast.present();
-      });
     });
   }
 
