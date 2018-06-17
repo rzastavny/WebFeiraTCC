@@ -6,6 +6,7 @@ import { CadastrarProdutoProvider } from '../../providers/cadastrar-produto/cada
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
 import { HomePage } from '../home/home';
+import { CameraOptions, Camera } from '@ionic-native/camera';
 
 /**
  * Generated class for the MenuprodutorPage page.
@@ -21,9 +22,7 @@ import { HomePage } from '../home/home';
 })
 export class MenuprodutorPage {
   produtos: Observable<any>;
-  informacoes: any;
-  produtosqtd: any = 0;
-  feiras: any;
+  photo: any;
   profile = {} as Profile;
 
   constructor(public navCtrl: NavController,
@@ -31,7 +30,8 @@ export class MenuprodutorPage {
     private provider: CadastrarProdutoProvider,
     private toast: ToastController,
     private alertCtrl: AlertController,
-    private fireDB: AngularFireDatabase) {
+    private fireDB: AngularFireDatabase,
+    private camera: Camera) {
 
     this.profile = this.navParams.get('profile');
     this.produtos = this.provider.buscarPorProdutor();
@@ -87,14 +87,7 @@ export class MenuprodutorPage {
     this.navCtrl.push(RegisterproductPage);
   }
 
-  adicionarProduto() {
-    this.produtosqtd++;
-  }
-
   logout(){
     this.navCtrl.push(HomePage);
   }
-
-
-
 }

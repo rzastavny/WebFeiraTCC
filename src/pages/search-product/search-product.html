@@ -18,43 +18,23 @@
         <ion-icon name="ios-arrow-back" color="light"></ion-icon>
       </div>
     </div>
-      <ion-list >
-          <ion-searchbar placeholder="Filtrar" (ionInput)="getItems($event)"></ion-searchbar>
-        <!--<ion-item *ngFor="let produto of produtos | async">-->
-          <ion-item class="product">
-            <ion-card>
-
-              <ion-item>
-                <h2>Nome do Produto</h2>
-              </ion-item>
-            
-              <img  id="foto-produto" src="./assets/imgs/1490.jpg">
-            
-              <ion-card-content>
-                <p class="description">Descrição Descrição Descrição Descrição Descrição Descrição</p>
-              </ion-card-content>
-            
-              <ion-row>
-                <ion-col>
-                  <button ion-button icon-start clear small>
-                    <ion-icon name="thumbs-up"></ion-icon>
-                    <div>12 Likes</div>
-                  </button>
-                </ion-col>
-                <ion-col>
-                  <button ion-button icon-start clear small>
-                    <ion-icon name="text"></ion-icon>
-                    <div>4 Comments</div>
-                  </button>
-                </ion-col>
-                <ion-col center text-center>
-                  <ion-note>
-                    11h ago
-                  </ion-note>
-                </ion-col>
-              </ion-row>
-            
-            </ion-card>
+    <ion-list>
+      <ion-searchbar placeholder="Filtrar" (ionInput)="getItems($event)"></ion-searchbar>
+      <div id="item-list">
+        <ion-item *ngFor="let produto of produtos | async">
+          <button ion-item (click)="goToDetailsPage()">
+          <ion-icon item-end name="ios-arrow-forward-outline" color="icons" small></ion-icon>
+          <ion-thumbnail item-start>
+            <img src="{{produto.url}}">
+          </ion-thumbnail>
+          <p class="nome-produto">{{produto.nome}} </p>
+          <p class="info-produto">
+            <strong>Origem:</strong> {{produto.origem}}</p>
+          <p class="info-produto">
+            <strong>Categoria:</strong> {{produto.categoria}}</p>
+          </button>
         </ion-item>
-      </ion-list>
+
+        </div>
+        </ion-list>
   </ion-content>

@@ -21,6 +21,10 @@ export class CadastrarProdutoProvider {
         this.chave = this.fire.auth.currentUser.uid;
       
   }
+
+  //PRODUTOS
+
+  //Exibe todos os produtos cadastrados.
   buscarTodos() {
     return this.db.list(this.PATH)
       .snapshotChanges()
@@ -31,6 +35,7 @@ export class CadastrarProdutoProvider {
       })
   }
 
+  //Exibe apenas os produtos cadastrados pelo produtor.
   buscarPorProdutor() {
     return this.db.list(this.PATH, ref => ref.orderByChild('chave').equalTo(this.chave))
       .snapshotChanges()
@@ -41,6 +46,7 @@ export class CadastrarProdutoProvider {
       })
   }
 
+  //Exibe um produto específico.
   buscar(key: string) {
     return this.db.object(this.PATH + key)
       .snapshotChanges()
@@ -50,41 +56,15 @@ export class CadastrarProdutoProvider {
         };
       });
   }
-  salvar(produto: any, metainfo) {
-    return new Promise((resolve, reject) => {
-      if (produto.key) {
-        this.db.list(this.PATH)
-          .update(produto.key, {
-            nome: produto.nome,
-            descricao: produto.descricao,
-            origem: produto.origem,
-            categoria: produto.categoria,
-            url: metainfo.downloadURLs[0]
-          })
-          .then(() => resolve())
-          .catch((e) => reject(e));
-      }
-      else {
-        this.db.list(this.PATH)
-          .push({
-            nome: produto.nome,
-            descricao: produto.descricao,
-            origem: produto.origem,
-            categoria: produto.categoria,
-            chave: produto.chave,
-            url: metainfo.downloadURLs[0]
-          })
-          .then(() => resolve());
-      }
-    });
-  }
+
+  //Exclui o produto selecionado.
   excluir(key: string) {
     return this.db.list(this.PATH).remove(key);
   }
-  limpar() {
-    return this.db.list(this.PATH).remove();
-  }
 
+  //FOTOS DOS PRODUTOS
+
+  //
   getFiles(){
     let ref = this.db.list('produtos');
     return ref.snapshotChanges()
@@ -92,7 +72,6 @@ export class CadastrarProdutoProvider {
       return changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
     })
    }
-
 
   uploadToStorage(information): AngularFireUploadTask{
     let nome = `${new Date().getTime()}.jpg`;
@@ -114,13 +93,6 @@ export class CadastrarProdutoProvider {
     }
     let ref = this.db.list('produtos')
     return ref.push(toSave);
-  }
-
-  deleteFile(file){
-    let key = file.key;
-    let storagePath = file.fullPath;
-    this.db.list('files').remove(key);
-    return this.storage.ref(storagePath).delete();
   }
 
 }

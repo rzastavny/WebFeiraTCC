@@ -204,13 +204,4 @@ export class RegisterproductPage {
     });
   }
 
-  deleteFile(file) {
-    this.provider.deleteFile(file).subscribe(() => {
-      let toast = this.toast.create({
-        message: 'File Removed!',
-        duration: 3000
-      });
-      toast.present();
-    })
-  }
 }

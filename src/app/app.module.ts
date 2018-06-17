@@ -25,6 +25,7 @@ import { SearchProductPage } from '../pages/search-product/search-product';
 import { MenuprodutorPage } from '../pages/menuprodutor/menuprodutor';
 import { RegisterproductPage } from '../pages/registerproduct/registerproduct';
 import { CreateProfilePage } from '../pages/create-profile/create-profile';
+import { DetailProductPage } from '../pages/detail-product/detail-product';
 
  const config = {
   apiKey: "AIzaSyCHy6NAw_MObH0CS7V4LLQGvi-NO2Wi5pY",
@@ -46,7 +47,8 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile';
     MenuprodutorPage,
     RegisterproductPage,
     SearchProductPage,
-    CreateProfilePage
+    CreateProfilePage,
+    DetailProductPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile';
     MenuprodutorPage,
     RegisterproductPage,
     SearchProductPage,
-    CreateProfilePage
+    CreateProfilePage,
+    DetailProductPage
   ],
   providers: [
     StatusBar,

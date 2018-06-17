@@ -1,0 +1,47 @@
+<!--
+  Generated template for the DetailProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content >
+    <div class="header">
+        <div id="header-icon">
+          <div class="icon-product"></div>
+        </div>
+        <div id="header-title">
+          <p>PRODUTOS</p>
+        </div>
+        <div icon-only navPop id="icon-back">
+          <ion-icon name="ios-arrow-back" color="light"></ion-icon>
+        </div>
+      </div>
+      <div id="foto-produto">
+        <img src="">
+      </div>
+      <ion-list no-lines id="informacoes">
+        <ion-item id="item-title">
+          <p>{{produto.nome}}</p>
+        </ion-item>
+        <ion-item id="item-description">
+          <p>{{produto.descricao}}
+          </p>
+        </ion-item>
+      </ion-list>
+      <ion-list no-lines id="dados">
+        <ion-item class="gray">
+    
+          <ion-label>PRODUTOR:</ion-label>
+          <ion-label class="complete-info">Rafaela Zastavny</ion-label>
+    
+        </ion-item>
+        <ion-item>
+          <ion-label>CATEGORIA:</ion-label>
+        </ion-item>
+        <ion-item class="gray">
+          <ion-label>ORIGEM:</ion-label>
+        </ion-item>
+      </ion-list>
+</ion-content>

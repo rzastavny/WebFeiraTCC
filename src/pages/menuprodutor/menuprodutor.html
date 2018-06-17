@@ -1,26 +1,24 @@
 <ion-content id="background">
 
-  <div id="header">
-    <div text-center class="informations" id="header-title">Meus Produtos</div>
-    <ion-toolbar transparent>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="logout()">
-          <ion-icon>
-            <img src="./assets/icon/logout.png">
-          </ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-toolbar>
+  <div class="header">
+    <div id="header-icon">
+      <div class="icon-product"></div>
+    </div>
+    <div id="header-title">
+      <p id="meus-produtos">MEUS PRODUTOS</p>
 
-    <div id="profile-picture">
-      <ion-avatar item-end (click)="">
-      </ion-avatar>
+      <div class="informations" >
+        <p class="profile-infos" id="producer-name"><strong>{{profile.firstName}} {{profile.lastName}}</strong></p>
+        <p class="profile-infos"><strong>Email:</strong> {{profile.emailContact}}</p>
+        <p class="profile-infos"><strong>Telefones:</strong> {{profile.tel}} - {{profile.cel}}</p>
+      </div>
     </div>
 
+    <div icon-only navPop id="icon-back">
+      <ion-icon name="ios-arrow-back" color="light"></ion-icon>
+    </div>
   </div>
-  <div text-center class="informations" id="producer-name"> <p>{{profile.firstName}} {{profile.lastName}}</p></div>
 
-  <hr>
   <div id="item-list">
     <ion-list>
       <ion-item-sliding *ngFor="let produto of produtos | async">

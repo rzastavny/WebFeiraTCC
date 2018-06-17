@@ -1,57 +1,66 @@
 page-menuprodutor {
-    #background{
-        background: rgb(255, 255, 255);
-    }
-    #header{  
-        height: 115px;
-        box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
-        background: url('../assets/imgs/polygon.png');
-        background-position: center;
+    .header{
+        height: 150px;
+        background: url(../assets/imgs/polygon.png);
         background-repeat: no-repeat;
-        
+        background-position: center;
 
-        #header-title{
+        #icon-back{
+            float: right;
             position: absolute;
-            width: 100%;
+            margin-left: 90%;
+            margin-top: 15px;
+        }   
+    }
+    #header-icon{
+        background-color: #fff;
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin-left: 18px;
+        border-radius: 100%;
+        margin-top: 10px;
+        z-index: -1;
+    }
+    .icon-product{
+        width: 50px;
+        height: 50px;
+        background: url(../assets/icon/product42.png);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #header-title{
+        width: 65%;
+        position: absolute;
+        margin-right: 10%;
+        margin-top: 25px;
+        margin-left: 25%;
+        #meus-produtos{
+            font-size: 20px;
             color: #fff;
+            margin:0px;
+        }
+
+    }
+
+    .informations{
+        margin-top: 15px; 
+
+        .profile-infos{
+            color: rgb(54, 54, 54);
+            font-size: 14px;
+            font-weight: lighter;
+            margin: 0px;
+        }
+
+        #producer-name{
             font-size: 18px;
             font-weight: lighter;
-            padding-top: 15px;
-        }
-
-        #profile-picture{
-            width: 100px;
-            margin: 0 auto;
-        }
-        ion-avatar{
-            width: 100px;
-            height: 100px;
-            background: url(../assets/imgs/no-photo.jpg);
-            background-size: 100px;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin-top: 5%;
-            border: 2px #fff solid;
-            border-radius: 100%;
-
-            #choose-photo{
-                border-radius: 100%;
-                width: 10px;
-                height: 25px;
-                position: absolute;
-                margin-left: 80px;
-                margin-top: 60px;
-                background-color: #95C829;    
-            }
-            
+            color: rgb(71, 119, 8);
+            margin-bottom: 5px;
         }
     }
-    #producer-name{
-        color: rgb(54, 54, 54);
-        font-size: 22px;
-        font-weight: lighter;
-        padding-top: 10%;
-    }
+    
     .label{
         color: rgb(88, 88, 88);
     }
