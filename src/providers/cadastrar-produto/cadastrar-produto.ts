@@ -16,8 +16,7 @@ export class CadastrarProdutoProvider {
   constructor(private db: AngularFireDatabase,
     private fire: AngularFireAuth,
     private storage: AngularFireStorage) {
-        this.chave = this.fire.auth.currentUser.uid;
-      
+        this.chave = this.fire.auth.currentUser.uid;    
   }
 
   //PRODUTOS

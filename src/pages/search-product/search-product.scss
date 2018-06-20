@@ -1,4 +1,7 @@
 page-search-product {
+    .bg{
+        background: rgb(245, 245, 245);
+    }
     .header{
         height:70px;
         background-color: #95C829;
@@ -46,9 +49,10 @@ page-search-product {
     }
     .item-md ion-thumbnail[item-start]{
         margin: 0px;
+        margin-right: 10px;
         img{
-            width: 120px;
-            border-radius: 5px;
+            width: 100px;
+            height: auto;
         }
     }
     .back{
@@ -61,40 +65,28 @@ page-search-product {
     .searchbar{
     background-color: #95C829;
     transition: 2s;
+    
         .searchbar-input{
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
             border-radius: 20px;
-
         }
-    }
-    .searchbar-wp {
-        .searchbar-input-container{
-            border: 0px;
+
+        .searchbar-wp {
+            .searchbar-input-container{
+                border: 0px;
+            }
         }
     } 
 
-    .product{
+    #card-item{
+        padding: 5px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    .item{  
         padding: 0px;
-        
-        .label{
-            margin: 0px;
-        }
-
-        ion-card{
-            margin: 10px;
-            border-radius: 10px;
-            background-color: transparent;
-        }
-        .description{
-            white-space: normal;
-            word-break: break-all;
-        }
+        margin: 0auto;
     }
-
-    .item{
-        padding-left: 5px; 
-    }
-
+    
     .item.item-block .item-inner {
         padding-right: 0px; 
         background: transparent;  
@@ -102,7 +94,6 @@ page-search-product {
     }
 
     .item-button, .item-button-wp{
-        border-bottom: 0.55px solid rgb(200, 199, 204);
     }
     .nome-produto{
         font-size: 20px;
@@ -115,6 +106,10 @@ page-search-product {
         margin-left: 10px;
         font-size: 15px;
         margin-top: 10px;
+    }
+
+    .label{
+        margin: 0px;
     }
 
     

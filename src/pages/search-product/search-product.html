@@ -20,7 +20,7 @@
     </div>
     <ion-list>
       <ion-searchbar placeholder="Filtrar" (ionInput)="getItems($event)"></ion-searchbar>
-      <div id="item-list">
+        <ion-card id="card-item">
         <ion-item *ngFor="let produto of produtos | async">
           <button ion-item (click)="goToDetailsPage(produto)">
           <ion-icon item-end name="ios-arrow-forward-outline" color="icons" small></ion-icon>
@@ -32,7 +32,6 @@
             <strong>Produtor:</strong> {{produto.firstName}} {{produto.lastName}}</p>
           </button>
         </ion-item>
-
-        </div>
+      </ion-card>
         </ion-list>
   </ion-content>
