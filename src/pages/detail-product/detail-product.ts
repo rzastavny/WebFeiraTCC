@@ -15,15 +15,28 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'detail-product.html',
 })
 export class DetailProductPage {
-  produto: any;
-  produtos: Observable<any>;
+  produto = {
+    nome: '',
+    descricao: '',
+    url: '',
+    origem: '',
+    categoria: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    tel: '',
+    cel: ''
+  };
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.produtos = navParams.data;
-    console.log(navParams.data);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailProductPage');
+    if (this.navParams.get('produto') != null) {
+      this.produto = this.navParams.get('produto');
+      console.log(this.produto);
+    }
+
+
   }
 
 }

@@ -22,16 +22,14 @@
       <ion-searchbar placeholder="Filtrar" (ionInput)="getItems($event)"></ion-searchbar>
       <div id="item-list">
         <ion-item *ngFor="let produto of produtos | async">
-          <button ion-item (click)="goToDetailsPage()">
+          <button ion-item (click)="goToDetailsPage(produto)">
           <ion-icon item-end name="ios-arrow-forward-outline" color="icons" small></ion-icon>
           <ion-thumbnail item-start>
             <img src="{{produto.url}}">
           </ion-thumbnail>
           <p class="nome-produto">{{produto.nome}} </p>
           <p class="info-produto">
-            <strong>Origem:</strong> {{produto.origem}}</p>
-          <p class="info-produto">
-            <strong>Categoria:</strong> {{produto.categoria}}</p>
+            <strong>Produtor:</strong> {{produto.firstName}} {{produto.lastName}}</p>
           </button>
         </ion-item>
 

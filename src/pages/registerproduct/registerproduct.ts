@@ -8,6 +8,9 @@ import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
 import { MenuprodutorPage } from '../menuprodutor/menuprodutor';
+import { Profile } from '../../models/profile';
+import { UserProvider } from '../../providers/user/user';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -22,26 +25,28 @@ export class RegisterproductPage {
   title: string;
   form: FormGroup;
   produto: any;
-  files: Observable<any[]>;
+  profile = {} as Profile;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
     private provider: CadastrarProdutoProvider,
+    private providerUser: UserProvider,
     private formBuilder: FormBuilder,
     private camera: Camera,
     private loadingCtrl: LoadingController,
-    private fireAuth: AngularFireAuth) {
+    private fireAuth: AngularFireAuth,
+    private fireDB: AngularFireDatabase) {
 
 
     this.produto = this.navParams.data.produto || {};
     this.criaForm();
-
-    this.files = this.provider.getFiles();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterproductPage');
+    this.providerUser.getUser().on('value', profile => {
+      this.profile = profile.val();
+    });
   }
 
   criaForm() {
@@ -68,10 +73,9 @@ export class RegisterproductPage {
 
   pegarFotoAvancado() {
     const options: CameraOptions = {
-      quality: 600,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      mediaType: this.camera.MediaType.PICTURE,
       saveToPhotoAlbum: false,
       allowEdit: true,
       targetWidth: 300,
@@ -79,129 +83,29 @@ export class RegisterproductPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:
+
       this.photo = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
-      console.log(err);
-    });
-  }
-
-  uploadInformation(text) {
-    let upload = this.provider.uploadToStorage(text);
-    upload.then().then(res => {
-      this.provider.storeInfoToDatabase(res.metadata, this.form.value).then(() => {
-        let toast = this.toast.create({
-          message: 'New File Added!',
-          duration: 3000
-        });
-        toast.present();
-      });
+      
     });
   }
 
   salvar() {
+    let loader = this.loadingCtrl.create({
+      content: "Cadastrando produto...",
+      spinner: 'bubbles'
+    });
+    loader.present();
     if (this.form.valid) {
       let upload = this.provider.uploadToStorage(this.photo);
-      upload.then().then(res => { console.dir(res);
-        this.provider.storeInfoToDatabase(res.metadata, this.form.value).then(() => {
-          let toast = this.toast.create({
-            message: 'Nova foto adicionada!',
-            duration: 3000
-          })
-          toast.present();
+      upload.then().then(res => {
+        this.provider.storeInfoToDatabase(res.metadata, this.form.value, this.profile).then(() => {
+          console.dir(this.profile);
+          loader.dismiss();
+          this.presentToast("Novo produto cadastrado.", 3000, 'top', 'isValidToast');
           this.navCtrl.push(MenuprodutorPage);
-        
+        })
       })
-    })
-  }
-}
-
-
-  // takePhoto() {
-  //   const options: CameraOptions = {
-  //     quality: 100,
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     encodingType: this.camera.EncodingType.JPEG,
-  //     mediaType: this.camera.MediaType.PICTURE,
-  //     targetWidth: 300,
-  //     targetHeight: 300
-  //   }
-
-  //   this.camera.getPicture(options).then((imageData) => {
-  //     this.loading = this.loadingCtrl.create({
-  //       content: "Aguarde..."
-  //     })
-  //     this.loading.present();
-  //     this.photo = this.dataURLtoBlob('data:image/jpeg;base64,' + imageData);
-  //     this.upload();
-
-  //   }, (err) => {
-  //     console.log(err);
-  //   });
-  // }
-
-  // dataURLtoBlob(myURL) {
-  //   let binary = atob(myURL.split(',')[1]);
-  //   let array = [];
-  //   for (let i = 0; i < binary.length; i++) {
-  //     array.push(binary.charCodeAt(i));
-  //   }
-  //   return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
-  // }
-
-  // upload() {
-  //   if (this.photo) {
-  //     var uploadTask =  firebase.storage().ref().child('images/'+this.imageName+'.jpg').put(this.selectedPhoto);
-  //     uploadTask.then(this.onSuccess, this.onErrors);
-  //   }
-  // }
-
-  // onSuccess = (snapshot) => {
-  //   this.currentPhoto = snapshot.downloadURL;
-  //   this.loading.dismiss();
-  // }
-
-  // onErrors = (error) => {
-  //   console.log(error);
-  //   this.loading.dismiss();
-  // }
-
-  // getMyURL() {
-  //   firebase.storage().ref().child('images/myphoto.jpg').getDownloadURL().then((url) => {
-  //     this.imgSource = url;
-  //   })
-  // }
-  tirarFoto() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
     }
-
-    this.camera.getPicture(options).then((imageData) => {
-      this.photo = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      // Handle error
-    });
   }
-
-  pegarFoto() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum: false
-    }
-
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:
-      this.photo = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      // Handle error
-    });
-  }
-
 }

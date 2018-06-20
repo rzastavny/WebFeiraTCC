@@ -7,6 +7,7 @@ import { CreateProfilePage } from '../create-profile/create-profile';
 import { User } from '@firebase/auth-types';
 import { UserProvider } from '../../providers/user/user';
 import { Observable } from 'rxjs/Observable';
+import { Profile } from '../../models/profile';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class LoginPage {
   @ViewChild('senha') senha;
 
   loading: any;
-  profile: Observable<any>;
+  profile = {} as Profile;
   user = {} as User
   email: string;
   password: string;
@@ -76,27 +77,38 @@ export class LoginPage {
       .then(() => {
         loader.dismiss();
 
-        this.userProvieder.getUser().subscribe(profiles => {
-        
-          //Se existir perfil, fará o login diretamente para o perfil do produtor.
-          if (profiles.length > 0) {
-            profiles.forEach(profile => {
-              this.profile = profile;
-            });
-            this.navCtrl.setRoot(MenuprodutorPage, {
-              profile: this.profile
-            });
-            this.presentToast("Bem vindo!", 3000, 'top', 'isValidToast');
 
-          } 
-          
-          //Se não existir perfil, chama a página para criar um perfil.
-          else {
+        this.userProvieder.getUser().on('value', profile => {
+          this.profile = profile.val();
+          if (this.profile.firstName) {
+            this.navCtrl.setRoot(MenuprodutorPage).then(() => {
+              this.presentToast("Bem vindo!", 3000, 'top', 'isValidToast')
+            });
+          } else {
             this.navCtrl.push(CreateProfilePage);
           }
         })
+        // this.userProvieder.getUser().subscribe(profiles => {
+
+        //   //Se existir perfil, fará o login diretamente para o perfil do produtor.
+        //   if (profiles.length > 0) {
+        //     profiles.forEach(profile => {
+        //       this.profile = profile;
+        //     });
+        //     this.navCtrl.setRoot(MenuprodutorPage, {
+        //       profile: this.profile
+        //     });
+        //     this.presentToast("Bem vindo!", 3000, 'top', 'isValidToast');
+
+        //   } 
+
+        //   //Se não existir perfil, chama a página para criar um perfil.
+        //   else {
+        //     this.navCtrl.push(CreateProfilePage);
+        //   }
+        // })
       })
-      
+
       //Excessões em que o login não é possível.
       .catch(error => {
         loader.dismiss();

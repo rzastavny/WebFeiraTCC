@@ -5,7 +5,6 @@ import { AngularFireStorage, AngularFireUploadTask } from "angularfire2/storage"
 
 /*
   Generated class for the CadastrarProdutoProvider provider.
-
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
@@ -17,13 +16,11 @@ export class CadastrarProdutoProvider {
   constructor(private db: AngularFireDatabase,
     private fire: AngularFireAuth,
     private storage: AngularFireStorage) {
-
         this.chave = this.fire.auth.currentUser.uid;
       
   }
 
   //PRODUTOS
-
   //Exibe todos os produtos cadastrados.
   buscarTodos() {
     return this.db.list(this.PATH)
@@ -63,7 +60,6 @@ export class CadastrarProdutoProvider {
   }
 
   //FOTOS DOS PRODUTOS
-
   //
   getFiles(){
     let ref = this.db.list('produtos');
@@ -78,8 +74,7 @@ export class CadastrarProdutoProvider {
     return this.storage.ref(`produtos/${nome}`).putString(information, 'data_url');
   }
 
-  storeInfoToDatabase(metainfo, produto){
-    console.dir(metainfo);
+  storeInfoToDatabase(metainfo, produto, produtor){
     let toSave = {
     nome: produto.nome,
     descricao: produto.descricao,
@@ -89,11 +84,17 @@ export class CadastrarProdutoProvider {
     dataUpload: metainfo.timeCreated,
     url: metainfo.downloadURLs[0],
     fullPath: metainfo.fullPath,
-    contentType: metainfo.contentType
+    contentType: metainfo.contentType,
+    firstName: produtor.firstName,
+    lastName: produtor.lastName,
+    email: produtor.email,
+    tel: produtor.tel,
+    cel: produtor.cel
+
+
     }
     let ref = this.db.list('produtos')
     return ref.push(toSave);
   }
 
 }
-

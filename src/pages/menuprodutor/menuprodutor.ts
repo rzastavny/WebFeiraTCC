@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
 import { HomePage } from '../home/home';
 import { CameraOptions, Camera } from '@ionic-native/camera';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the MenuprodutorPage page.
@@ -31,16 +32,17 @@ export class MenuprodutorPage {
     private toast: ToastController,
     private alertCtrl: AlertController,
     private fireDB: AngularFireDatabase,
-    private camera: Camera) {
+    private camera: Camera,
+    private providerUser: UserProvider) {
 
-    this.profile = this.navParams.get('profile');
+    // this.profile = this.navParams.get('profile');
     this.produtos = this.provider.buscarPorProdutor();
   }
 
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MenuprodutorPage');
-
+    this.providerUser.getUser().on('value', profile => {
+      this.profile = profile.val();
+    });
   }
 
   editarProduto(produto: any) {
@@ -84,10 +86,10 @@ export class MenuprodutorPage {
   }
 
   goRegisterPage(): void {
-    this.navCtrl.push(RegisterproductPage);
+    this.navCtrl.push(RegisterproductPage, { perfil: this.profile });
   }
 
-  logout(){
+  logout() {
     this.navCtrl.push(HomePage);
   }
 }
