@@ -3,11 +3,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from "angularfire2/storage";
 
-/*
-  Generated class for the CadastrarProdutoProvider provider.
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class CadastrarProdutoProvider {
   private PATH = 'produtos/';
@@ -16,10 +11,9 @@ export class CadastrarProdutoProvider {
   constructor(private db: AngularFireDatabase,
     private fire: AngularFireAuth,
     private storage: AngularFireStorage) {
-        this.chave = this.fire.auth.currentUser.uid;    
+    this.chave = this.fire.auth.currentUser.uid;
   }
 
-  //PRODUTOS
   //Exibe todos os produtos cadastrados.
   buscarTodos() {
     return this.db.list(this.PATH)
@@ -58,39 +52,35 @@ export class CadastrarProdutoProvider {
     return this.db.list(this.PATH).remove(key);
   }
 
-  //FOTOS DOS PRODUTOS
-  //
-  getFiles(){
+  getFiles() {
     let ref = this.db.list('produtos');
     return ref.snapshotChanges()
-    .map(changes=>{
-      return changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
-    })
-   }
+      .map(changes => {
+        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      })
+  }
 
-  uploadToStorage(information): AngularFireUploadTask{
+  uploadToStorage(information): AngularFireUploadTask {
     let nome = `${new Date().getTime()}.jpg`;
     return this.storage.ref(`produtos/${nome}`).putString(information, 'data_url');
   }
 
-  storeInfoToDatabase(metainfo, produto, produtor){
+  storeInfoToDatabase(metainfo, produto, produtor) {
     let toSave = {
-    nome: produto.nome,
-    descricao: produto.descricao,
-    origem: produto.origem,
-    categoria: produto.categoria,
-    chave: produto.chave,
-    dataUpload: metainfo.timeCreated,
-    url: metainfo.downloadURLs[0],
-    fullPath: metainfo.fullPath,
-    contentType: metainfo.contentType,
-    firstName: produtor.firstName,
-    lastName: produtor.lastName,
-    email: produtor.email,
-    tel: produtor.tel,
-    cel: produtor.cel
-
-
+      nome: produto.nome,
+      descricao: produto.descricao,
+      origem: produto.origem,
+      categoria: produto.categoria,
+      chave: produto.chave,
+      dataUpload: metainfo.timeCreated,
+      url: metainfo.downloadURLs[0],
+      fullPath: metainfo.fullPath,
+      contentType: metainfo.contentType,
+      firstName: produtor.firstName,
+      lastName: produtor.lastName,
+      email: produtor.email,
+      tel: produtor.tel,
+      cel: produtor.cel
     }
     let ref = this.db.list('produtos')
     return ref.push(toSave);

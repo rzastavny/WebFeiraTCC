@@ -18,10 +18,11 @@
         <ion-icon name="ios-arrow-back" color="light"></ion-icon>
       </div>
     </div>
-    <ion-list>
+    <ion-list no-lines>
       <ion-searchbar placeholder="Filtrar" (ionInput)="getItems($event)"></ion-searchbar>
-        <ion-card id="card-item">
+        
         <ion-item *ngFor="let produto of produtos | async">
+            <ion-card id="card-item">
           <button ion-item (click)="goToDetailsPage(produto)">
           <ion-icon item-end name="ios-arrow-forward-outline" color="icons" small></ion-icon>
           <ion-thumbnail item-start>
@@ -30,8 +31,13 @@
           <p class="nome-produto">{{produto.nome}} </p>
           <p class="info-produto">
             <strong>Produtor:</strong> {{produto.firstName}} {{produto.lastName}}</p>
+            <p class="info-produto">
+                <strong>Origem:</strong> {{produto.origem}}</p>
+              <p class="info-produto">
+                <strong>Categoria:</strong> {{produto.categoria}}</p>
           </button>
+        </ion-card>
         </ion-item>
-      </ion-card>
+      
         </ion-list>
   </ion-content>

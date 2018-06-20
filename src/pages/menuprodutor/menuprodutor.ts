@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { RegisterproductPage } from '../registerproduct/registerproduct';
 import { Observable } from 'rxjs/Observable';
 import { CadastrarProdutoProvider } from '../../providers/cadastrar-produto/cadastrar-produto';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
+import firebase from 'firebase';
 import { HomePage } from '../home/home';
 import { CameraOptions, Camera } from '@ionic-native/camera';
 import { UserProvider } from '../../providers/user/user';
@@ -33,7 +34,8 @@ export class MenuprodutorPage {
     private alertCtrl: AlertController,
     private fireDB: AngularFireDatabase,
     private camera: Camera,
-    private providerUser: UserProvider) {
+    private providerUser: UserProvider,
+    private loadCtrl: LoadingController) {
 
     // this.profile = this.navParams.get('profile');
     this.produtos = this.provider.buscarPorProdutor();
@@ -90,6 +92,46 @@ export class MenuprodutorPage {
   }
 
   logout() {
-    this.navCtrl.push(HomePage);
+    let alert = this.alertCtrl.create({
+      title: 'Desconectar',
+      message: 'Você realmente sair?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+
+            let load = this.loadCtrl.create({
+              content: 'Desconectando...'
+            });
+
+            load.present();
+
+            const userId: string = firebase.auth().currentUser.uid;
+            firebase.database().ref(`/users/${userId}`).off();
+            firebase.auth().signOut().then(() => {
+
+              load.dismiss().then(() => {
+                this.navCtrl.setRoot(HomePage).then(() => {
+                  this.toast.create({
+                    message: 'Volte sempre!',
+                    duration: 2000,
+                    position: 'top',
+                    cssClass: 'isValidToast'
+                  }).present();
+                })
+              });
+
+            });
+
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 }

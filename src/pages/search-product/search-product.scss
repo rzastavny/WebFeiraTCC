@@ -1,6 +1,6 @@
 page-search-product {
     .bg{
-        background: rgb(245, 245, 245);
+        
     }
     .header{
         height:70px;
@@ -79,8 +79,8 @@ page-search-product {
     } 
 
     #card-item{
-        padding: 5px;
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        padding: 5px;
     }
     .item{  
         padding: 0px;
@@ -91,9 +91,6 @@ page-search-product {
         padding-right: 0px; 
         background: transparent;  
         padding-left: 0px;
-    }
-
-    .item-button, .item-button-wp{
     }
     .nome-produto{
         font-size: 20px;

@@ -31,13 +31,13 @@
     <ion-slides id="slide-form-profile">
         <ion-slide padding>
             <p class="label-slide" text-left>Seu nome completo:</p>
-            <ion-item mode="ios" class="item-slide1" no-lines>
+            <ion-item  class="item-slide1" no-lines>
                 <ion-input mode="ios" type="text" placeholder="Nome" [(ngModel)]='profile.firstName' (input)='checkingName()' [clearInput]='!isValidName'></ion-input>
                 <ion-icon [hidden]='!isValidName' item-end small name='md-checkmark' color='isValid'></ion-icon>
             </ion-item>
 
-            <ion-item mode="ios" class="item-slide1" no-lines>
-                <ion-input mode="ios" type="text" placeholder="Sobrenome" [(ngModel)]='profile.lastName' (input)='checkingLastName()' [clearInput]='!isValidLastName'></ion-input>
+            <ion-item class="item-slide1" no-lines>
+                <ion-input  type="text" placeholder="Sobrenome" [(ngModel)]='profile.lastName' (input)='checkingLastName()' [clearInput]='!isValidLastName'></ion-input>
                 <ion-icon class="isChecked" [hidden]='!isValidLastName' item-end small name='md-checkmark' color='isValid'></ion-icon>
             </ion-item>
             <button id="btn-next" ion-button (click)='slideNext()' [disabled]='!isValidName || !isValidLastName'>PRÓXIMO</button>
@@ -46,19 +46,19 @@
         <ion-slide padding>
             <p class="label-slide" text-left>Seus dados para contato:</p>
             <form #myform='ngForm'>
-                <ion-item mode="ios" class="item-slide1" no-lines>
-                    <ion-input mode="ios" placeholder="E-mail" mode="ios" type="email" name="email" email [(ngModel)]='profile.emailContact'
+                <ion-item class="item-slide1" no-lines>
+                    <ion-input  placeholder="E-mail"  type="email" name="email" email [(ngModel)]='profile.emailContact'
                         [clearInput]='!myform.form.valid' pattern='[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'></ion-input>
                     <ion-icon class="isChecked" [hidden]='!myform.form.valid' item-end small name='md-checkmark' color='isValid'></ion-icon>
                 </ion-item>
             </form>
 
-            <ion-item mode="ios" id="tel-input" no-lines>
-                <ion-input mode="ios" type="number" placeholder="Telefone" [(ngModel)]='profile.tel' [clearInput]='!null'></ion-input>
+            <ion-item id="tel-input" no-lines>
+                <ion-input  type="number" placeholder="Telefone" [(ngModel)]='profile.tel' [clearInput]='!null'></ion-input>
             </ion-item>
 
-            <ion-item mode="ios" id="cel-input" no-lines>
-                <ion-input mode="ios" type="number" placeholder="Celular" [(ngModel)]='profile.cel' [clearInput]='!null'></ion-input>
+            <ion-item  id="cel-input" no-lines>
+                <ion-input  type="number" placeholder="Celular" [(ngModel)]='profile.cel' [clearInput]='!null'></ion-input>
             </ion-item>
 
             <button id="btn-confirm" ion-button block [disabled]='(!myform.form.valid)' (click)="createProfile()">CONFIRMAR</button>
